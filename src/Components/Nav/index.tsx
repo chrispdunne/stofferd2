@@ -39,7 +39,8 @@ function Nav({ fixed, white }: Props) {
 		>
 			<LogoToggle mobNavVis={mobNavVis} setMobNavVis={setMobNavVis} />
 
-			<Menu className="main" mobNavVis={mobNavVis} />
+			<Menu mobNavVis={mobNavVis} className="white main" />
+			<Menu mobNavVis={mobNavVis} className="black main" />
 		</StyledNav>
 	);
 }

@@ -1,19 +1,18 @@
 import styled from 'styled-components';
 
-export const RayBlast = styled.span`
-	position: absolute;
-	opacity: 0;
-	transition: all 0.3s ease-in-out;
-	z-index: -1;
-`;
-
 export const StyledNav = styled.div`
+	a {
+		color: #000;
+	}
 	&.fixed {
 		position: fixed;
 		width: 100%;
 		z-index: 1;
 	}
-	&.white {
+	.white {
+		right: 0;
+		left: initial;
+
 		a {
 			span {
 				color: #fff;
@@ -29,7 +28,7 @@ export const StyledNav = styled.div`
 	ul {
 		position: fixed;
 		z-index: 2;
-		right: 0;
+		left: 0;
 		top: 50%;
 		transform: translateY(-50%);
 	}
@@ -48,29 +47,14 @@ export const StyledNav = styled.div`
 	.nav-link {
 		span {
 			display: inline-block;
-			/* transition: all 0.25s ease-in-out; */
+			transition: transform 0.3s ease-in-out;
 		}
 		&:hover {
-			${RayBlast} {
-				opacity: 0.4;
-				transform: matrix3d(
-					1,
-					1,
-					0,
-					-0.2,
-					0,
-					1,
-					0,
-					0,
-					0,
-					0,
-					1,
-					0,
-					0,
-					0,
-					0,
-					1
-				);
+			span:nth-child(odd) {
+				transform: rotate(15deg);
+			}
+			span:nth-child(even) {
+				transform: rotate(-15deg);
 			}
 		}
 	}

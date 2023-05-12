@@ -21,7 +21,7 @@ export default function Effects() {
 				luminanceSmoothing={0.1}
 				height={600}
 			/>
-			<DotScreen angle={180} opacity={0.1} scale={5} />
+			<DotScreen angle={2} opacity={1} scale={256} />
 			<Noise opacity={1} />
 			{/* <Vignette eskil={false} offset={0.1} darkness={1.1} /> */}
 		</EffectComposer>

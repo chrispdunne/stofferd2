@@ -1,6 +1,6 @@
 import { Fragment } from 'react';
 import { Link } from 'react-router-dom';
-import { EyeBallGlow, MenuContainer, RayBlast } from './styles';
+import { EyeBallGlow, MenuContainer } from './styles';
 
 type Props = {
 	className?: string;
@@ -13,12 +13,11 @@ const Menu = ({ className = '', mobNavVis }: Props) => {
 		<MenuContainer>
 			<ul className={className + ' nav'}>
 				{links.map((path, i) => (
-					<li id={path} className="nav-link">
+					<li key={i} id={path} className="nav-link">
 						<Link to={`/${path}`}>
 							{path.split('').map((letter, i) => (
 								<Fragment key={`letter-${i}`}>
 									<span>{letter}</span>
-									<RayBlast>{letter}</RayBlast>
 								</Fragment>
 							))}
 						</Link>

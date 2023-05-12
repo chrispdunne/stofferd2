@@ -5,7 +5,7 @@ export const Grid = styled.div`
 	margin: 0;
 	padding: 0;
 	line-height: 0.7;
-	transition: all 0.2s ease-out;
+	transition: all 0.2s ease-in-out;
 	div {
 		margin: 0;
 		display: inline-block;
@@ -14,21 +14,6 @@ export const Grid = styled.div`
 		transition: all 0.2s ease-in-out;
 		box-shadow: 1px 1px 0px 1px rgba(0, 0, 0, 1);
 		background: #f7f7f7;
-		/* &:nth-child(8n + 1) {
-			transition-delay: 0.05s;
-		}
-		&:nth-child(8n + 3) {
-			transition-delay: 0.075s;
-		}
-		&:nth-child(8n + 2) {
-			transition-delay: 0.1s;
-		}
-		&:nth-child(8n + 4) {
-			transition-delay: 0.15s;
-		}
-		&:nth-child(8n + 6) {
-			transition-delay: 0.175s;
-		} */
 	}
 	.empty {
 		opacity: 0;
@@ -46,29 +31,8 @@ export const Grid = styled.div`
 	}
 	@media only screen and (min-width: 61.25em) {
 		&:hover {
-			opacity: 1;
-			.fill {
-				transform: matrix3d(
-					1,
-					1,
-					0,
-					-0.2,
-					0,
-					1,
-					0,
-					0,
-					0,
-					0,
-					1,
-					0,
-					0,
-					0,
-					0,
-					1
-				);
-				/* border: 0.5rem solid black;
-				box-sizing: border-box;
-				border-left-color: transparent; */
+			div {
+				border-radius: 25%;
 			}
 		}
 	}
@@ -96,7 +60,6 @@ export const Toggl = styled.button`
 	width: 6.5rem;
 	appearance: none;
 	background: transparent;
-	/* position: absolute; */
 	z-index: 5;
 	left: 2rem;
 	top: 2rem;
