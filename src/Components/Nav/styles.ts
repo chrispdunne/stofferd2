@@ -24,6 +24,9 @@ export const StyledNav = styled.div`
 				}
 			}
 		}
+		li {
+			text-align: right;
+		}
 	}
 	ul {
 		position: fixed;
@@ -31,10 +34,11 @@ export const StyledNav = styled.div`
 		left: 0;
 		top: 50%;
 		transform: translateY(-50%);
+		padding: 0;
 	}
 	li {
 		list-style-type: none;
-		text-align: right;
+		text-align: left;
 	}
 	a {
 		font-weight: bold;

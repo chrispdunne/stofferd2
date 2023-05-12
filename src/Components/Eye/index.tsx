@@ -26,7 +26,6 @@ export default function Eye() {
 
 	const [eyeHovered, _setEyeHovered] = useState(false);
 	const setEyeHovered = (bool: boolean) => {
-		console.log({ bool });
 		_setEyeHovered(bool);
 	};
 	const distanceFromCenter = getCentredValue(x, y);

@@ -44,6 +44,7 @@ export const LogoToggl = styled.div`
 	justify-content: space-between;
 	align-items: center;
 	position: absolute;
+	z-index: 10;
 	&.fixed {
 		position: fixed;
 		background-color: #000;
