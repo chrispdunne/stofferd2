@@ -1,36 +1,17 @@
 import classNames from 'classnames';
-// import Menu from './Menu';
 import LogoToggle from '../Logo/LogoToggle';
-import { useCallback, useEffect, useState } from 'react';
+import { useState } from 'react';
 import { StyledNav } from './styles';
 import Menu from './Menu';
 
 type Props = {
 	fixed?: boolean;
 	white?: boolean;
+	double?: boolean;
 };
 
-function Nav({ fixed, white }: Props) {
-	// let scrollTop = 0;
-	// const [scrollingUp, setScrollingUp] = useState(false);
+function Nav({ fixed, white, double }: Props) {
 	const [mobNavVis, setMobNavVis] = useState(false);
-	// const handleScroll = useCallback(e => {
-	// 	if (!window) return;
-	// 	if (window.scrollY < scrollTop && window.scrollY > 300) {
-	// 		requestAnimationFrame(() => setScrollingUp(true));
-	// 	} else {
-	// 		requestAnimationFrame(() => setScrollingUp(false));
-	// 	}
-
-	// 	scrollTop = window.scrollY;
-	// }, []);
-
-	// useEffect(() => {
-	// 	window.addEventListener('scroll', handleScroll);
-	// 	return () => {
-	// 		window.removeEventListener('scroll', handleScroll);
-	// 	};
-	// }, []);
 
 	return (
 		<StyledNav
@@ -40,7 +21,7 @@ function Nav({ fixed, white }: Props) {
 			<LogoToggle mobNavVis={mobNavVis} setMobNavVis={setMobNavVis} />
 
 			<Menu mobNavVis={mobNavVis} className="white main" />
-			<Menu mobNavVis={mobNavVis} className="black main" />
+			{double && <Menu mobNavVis={mobNavVis} className="black main" />}
 		</StyledNav>
 	);
 }

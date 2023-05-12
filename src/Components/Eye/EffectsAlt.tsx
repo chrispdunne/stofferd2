@@ -1,19 +1,24 @@
 import {
-	Bloom,
-	DepthOfField,
-	DotScreen,
+	// Bloom,
+	// DepthOfField,
+	// DotScreen,
 	EffectComposer,
-	Noise,
-	Vignette,
-	ChromaticAberration,
-	Glitch,
-	GodRays,
-	Pixelation,
-	ShockWave,
-	SelectiveBloom,
-	Outline
+	// Noise,
+	// Vignette,
+	// ChromaticAberration,
+	// Glitch,
+	GodRays
+	// Pixelation,
+	// ShockWave,
+	// SelectiveBloom,
+	// Outline
 } from '@react-three/postprocessing';
-import { BufferGeometry, Material, Mesh, Vector2 } from 'three';
+import {
+	BufferGeometry,
+	Material,
+	Mesh
+	//Vector2
+} from 'three';
 
 interface Props {
 	light: Mesh<BufferGeometry, Material | Material[]> | null;

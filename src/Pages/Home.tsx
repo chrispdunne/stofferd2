@@ -17,7 +17,7 @@ import { Link } from 'react-router-dom';
 export default function Home() {
 	return (
 		<>
-			<Nav />
+			<Nav double />
 			<Eye />
 			<NextSectionButton white target="s_and_p" />
 

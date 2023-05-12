@@ -1,10 +1,10 @@
 import {
 	Bloom,
-	DepthOfField,
-	DotScreen,
+	// DepthOfField,
+	// DotScreen,
 	EffectComposer,
-	Noise,
-	Vignette
+	Noise
+	// Vignette
 } from '@react-three/postprocessing';
 
 export default function Effects() {

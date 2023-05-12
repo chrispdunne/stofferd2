@@ -1,4 +1,4 @@
-import { useSpring } from '@react-spring/three';
+// import { useSpring } from '@react-spring/three';
 import { useEffect } from 'react';
 import * as THREE from 'three';
 import irisUrl from '../../img/iris.jpg';
@@ -8,7 +8,7 @@ interface Props {
 	eyeHovered: boolean;
 }
 export default function Iris({ eyeHovered }: Props) {
-	const { scale } = useSpring({ scale: eyeHovered ? 0.5 : 1 });
+	// const { scale } = useSpring({ scale: eyeHovered ? 0.5 : 1 });
 
 	useEffect(() => {
 		if (eyeHovered) {

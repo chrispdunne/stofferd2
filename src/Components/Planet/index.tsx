@@ -2,7 +2,7 @@ import { useEffect, useMemo, useState } from 'react';
 import throttle from 'lodash.throttle';
 import { Canvas } from '@react-three/fiber';
 import sunUrl from '../../img/sun-texture.jpg';
-import starsUrl from '../../img/stars-darker.jpg';
+// import starsUrl from '../../img/stars-darker.jpg';
 
 import * as THREE from 'three';
 import Effects from './Effects';
@@ -10,9 +10,9 @@ import { animated, useSpring } from '@react-spring/three';
 import { getCentredValue } from '../../utils/mouse';
 
 const sunTexture = new THREE.TextureLoader().load(sunUrl);
-const starsTexture = new THREE.TextureLoader().load(starsUrl);
+// const starsTexture = new THREE.TextureLoader().load(starsUrl);
 
-const normalScale = new THREE.Vector2(1);
+// const normalScale = new THREE.Vector2(1);
 
 const Sky = () => {
 	// const { scene } = useThree();
