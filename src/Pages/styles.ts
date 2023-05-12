@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components';
-
+import { Link } from 'react-router-dom';
 interface WhiteProps {
 	white?: boolean;
 }
@@ -13,10 +13,12 @@ export const FullHeightSection = styled.section<WhiteProps>`
 	align-items: center;
 `;
 
-export const WorkLogo = styled.img`
-	max-width: 300px;
+export const WorkLogo = styled(Link)`
 	grid-column: 2 / 3;
 	justify-self: center;
+	img {
+		max-width: 300px;
+	}
 `;
 
 export const WorkOverview = styled.div<WhiteProps>`

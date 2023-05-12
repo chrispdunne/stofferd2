@@ -87,6 +87,7 @@ code {
 	position: relative;
 	transition: color 0.125s ease-in-out 0.125s;
 	text-transform: uppercase;
+	text-decoration: none;
 }
 
 .btn a,

@@ -12,6 +12,7 @@ import {
 	WorkSubtitle,
 	WorkTitle
 } from './styles';
+import { Link } from 'react-router-dom';
 
 export default function Home() {
 	return (
@@ -21,31 +22,43 @@ export default function Home() {
 			<NextSectionButton white target="s_and_p" />
 
 			<FullHeightSection id="s_and_p" white>
-				<WorkLogo src={sandp} alt="S&P Global" />
+				<WorkLogo to="/work/sandp">
+					<img src={sandp} alt="S&P Global" />
+				</WorkLogo>
 				<WorkOverview white>
 					<WorkSubtitle>React, TypeScript, C#</WorkSubtitle>
 					<WorkTitle>S&P</WorkTitle>
-					<button className="btn">Find out more</button>
+					<Link className="btn" to="/work/sandp">
+						Find out more
+					</Link>
 				</WorkOverview>
 				<NextSectionButton target="ey" />
 			</FullHeightSection>
 
 			<FullHeightSection id="ey">
-				<WorkLogo src={ey} alt="Ernst & Young" />
+				<WorkLogo to="/work/ey">
+					<img src={ey} alt="Ernst & Young" />
+				</WorkLogo>
 				<WorkOverview>
 					<WorkSubtitle>React, TypeScript, GraphQL</WorkSubtitle>
 					<WorkTitle>Ernst & Young</WorkTitle>
-					<button className="btn">Find out more</button>
+					<Link className="btn" to="/work/ey">
+						Find out more
+					</Link>
 				</WorkOverview>
 				<NextSectionButton target="firm" white />
 			</FullHeightSection>
 
 			<FullHeightSection id="firm" white>
-				<WorkLogo src={firm} alt="The Firm" />
+				<WorkLogo to="/work/firm">
+					<img src={firm} alt="The Firm" />
+				</WorkLogo>
 				<WorkOverview white>
 					<WorkSubtitle>React, GraphQl, WordPress</WorkSubtitle>
 					<WorkTitle>The Firm</WorkTitle>
-					<button className="btn">Find out more</button>
+					<Link className="btn" to="/work/firm">
+						Find out more
+					</Link>
 				</WorkOverview>
 
 				<BackToTopButton />
