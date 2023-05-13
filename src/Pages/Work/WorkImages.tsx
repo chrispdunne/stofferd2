@@ -1,4 +1,4 @@
-import { useCallback, useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 import { WorkImagesContainer } from './styles';
 import gsap from 'gsap';
 import ScrollTrigger from 'gsap/ScrollTrigger';

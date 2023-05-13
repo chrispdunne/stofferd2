@@ -13,5 +13,5 @@ export default function useTimeline(setTl: (v: gsap.core.Timeline) => void) {
 				}
 			})
 		);
-	}, []);
+	}, [setTl]);
 }
