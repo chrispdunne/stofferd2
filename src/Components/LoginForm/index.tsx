@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import styled from 'styled-components';
 
 const LoginBox = styled.div`
@@ -33,9 +32,6 @@ const LoginBox = styled.div`
 	}
 `;
 export default function LoginForm() {
-	// const [typed, setTyped] = useState('');
-	// const handleChange = (e: React.ChangeEvent<HTMLInputElement>) =>
-	// 	setTyped(e.target.value);
 	const handleChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
 		const res = await window.fetch('/.netlify/functions/entry', {
 			method: 'POST',
