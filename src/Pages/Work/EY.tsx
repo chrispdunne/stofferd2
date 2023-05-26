@@ -8,7 +8,7 @@ const images = importAll(
 
 export default function EY() {
 	return (
-		<PageGeneric>
+		<PageGeneric isProtected>
 			<WorkImages
 				images={images as string[]}
 				title="Ernst & Young"

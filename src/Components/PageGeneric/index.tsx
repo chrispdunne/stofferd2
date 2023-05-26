@@ -5,20 +5,21 @@ import LoginForm from '../LoginForm';
 
 interface Props {
 	children: ReactNode;
+	isProtected?: boolean;
 }
 
-export default function PageGeneric({ children }: Props) {
+export default function PageGeneric({ children, isProtected }: Props) {
 	const [loggedIn, setLoggedIn] = useState(false);
 	useEffect(() => {
 		const loggedIn = localStorage.getItem('loggedIn');
 		if (loggedIn) setLoggedIn(true);
 	}, []);
-	return loggedIn ? (
+	return !isProtected || loggedIn ? (
 		<Container>
 			<Nav />
 			<>{children}</>
 		</Container>
 	) : (
-		<LoginForm />
+		<LoginForm loggedIn={loggedIn} setLoggedIn={setLoggedIn} />
 	);
 }

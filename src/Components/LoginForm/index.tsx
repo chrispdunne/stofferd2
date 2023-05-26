@@ -31,7 +31,11 @@ const LoginBox = styled.div`
 		max-width: 90vw;
 	}
 `;
-export default function LoginForm() {
+interface Props {
+	loggedIn: boolean;
+	setLoggedIn: (loggedIn: boolean) => void;
+}
+export default function LoginForm({ loggedIn, setLoggedIn }: Props) {
 	const handleChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
 		const res = await window.fetch('/.netlify/functions/entry', {
 			method: 'POST',
@@ -46,6 +50,7 @@ export default function LoginForm() {
 		const body = await res.text();
 		if (body === 'true') {
 			window.localStorage.setItem('loggedIn', 'true');
+			setLoggedIn(true);
 		}
 	};
 	return (

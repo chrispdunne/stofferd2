@@ -8,7 +8,7 @@ const images = importAll(
 
 export default function SandP() {
 	return (
-		<PageGeneric>
+		<PageGeneric isProtected>
 			<WorkImages
 				images={images as string[]}
 				title="S&P Global"
