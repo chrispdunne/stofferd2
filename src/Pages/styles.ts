@@ -12,7 +12,8 @@ export const FullHeightSection = styled.section<WhiteProps>`
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-	@media only screen and (min-width: 768px) {
+	/* 980px */
+	@media only screen and (min-width: 61.25em) {
 		height: 100vh;
 		display: grid;
 		grid-template-columns: 1fr 1fr 1fr;
@@ -24,7 +25,8 @@ export const WorkLogo = styled(Link)`
 	grid-column: 2 / 3;
 	justify-self: center;
 	img {
-		max-width: 300px;
+		max-width: 200px;
+		max-height: 110px;
 	}
 `;
 
@@ -33,14 +35,16 @@ export const WorkOverview = styled.div<WhiteProps>`
 	text-align: center;
 	z-index: 5;
 	position: relative;
-	@media only screen and (min-width: 768px) {
+	/* 980px */
+	@media only screen and (min-width: 61.25em) {
 		justify-self: ${({ white }) => (white ? 'end' : 'start')};
 	}
 
 	${({ white }) =>
 		white
 			? css`
-					@media only screen and (min-width: 768px) {
+					/* 980px */
+					@media only screen and (min-width: 61.25em) {
 						text-align: right;
 						margin-right: 50px;
 					}
@@ -57,7 +61,8 @@ export const WorkOverview = styled.div<WhiteProps>`
 			  `
 			: css`
 					color: #fff;
-					@media only screen and (min-width: 768px) {
+					/* 980px */
+					@media only screen and (min-width: 61.25em) {
 						text-align: left;
 
 						margin-left: 50px;
