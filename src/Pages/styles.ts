@@ -5,12 +5,19 @@ interface WhiteProps {
 }
 
 export const FullHeightSection = styled.section<WhiteProps>`
-	height: 100vh;
+	height: 80vh;
 	background-color: ${props => (props.white ? 'white' : 'black')};
 	position: relative;
-	display: grid;
-	grid-template-columns: 1fr 1fr 1fr;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
 	align-items: center;
+	@media only screen and (min-width: 768px) {
+		height: 100vh;
+		display: grid;
+		grid-template-columns: 1fr 1fr 1fr;
+		align-items: center;
+	}
 `;
 
 export const WorkLogo = styled(Link)`
@@ -22,14 +29,21 @@ export const WorkLogo = styled(Link)`
 `;
 
 export const WorkOverview = styled.div<WhiteProps>`
-	justify-self: ${({ white }) => (white ? 'end' : 'start')};
+	justify-self: center;
+	text-align: center;
 	z-index: 5;
 	position: relative;
+	@media only screen and (min-width: 768px) {
+		justify-self: ${({ white }) => (white ? 'end' : 'start')};
+	}
+
 	${({ white }) =>
 		white
 			? css`
-					text-align: right;
-					margin-right: 50px;
+					@media only screen and (min-width: 768px) {
+						text-align: right;
+						margin-right: 50px;
+					}
 					.btn {
 						color: #000;
 						border-color: #000;
@@ -43,10 +57,14 @@ export const WorkOverview = styled.div<WhiteProps>`
 			  `
 			: css`
 					color: #fff;
-					margin-left: 50px;
-					grid-column: 1 / 2;
-					grid-row: 1 / 2;
-					justify-self: start;
+					@media only screen and (min-width: 768px) {
+						text-align: left;
+
+						margin-left: 50px;
+						grid-column: 1 / 2;
+						grid-row: 1 / 2;
+						justify-self: start;
+					}
 			  `};
 `;
 
@@ -57,6 +75,6 @@ export const WorkTitle = styled.h2`
 `;
 export const WorkSubtitle = styled.h3`
 	text-transform: uppercase;
-	font-size: 0.9rem;
+	font-size: 0.8rem;
 	margin-bottom: 6px;
 `;

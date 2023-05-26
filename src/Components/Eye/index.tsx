@@ -55,12 +55,35 @@ export default function Eye() {
 		[setX, setY]
 	);
 
+	const onDeviceOrientation = useMemo(
+		() =>
+			throttle((e: DeviceOrientationEvent) => {
+				console.log({ e });
+				const { beta, gamma } = e;
+				setX((beta ?? 0) / 180);
+				setY((gamma ?? 0) / 90);
+			}, 20),
+		[]
+	);
+
 	useEffect(() => {
-		window.addEventListener('mousemove', onMouseMove);
+		if (window?.DeviceOrientationEvent && 'ontouchstart' in window) {
+			window.addEventListener('deviceorientation', onDeviceOrientation);
+		} else {
+			window.addEventListener('mousemove', onMouseMove);
+		}
+
 		return () => {
-			window.removeEventListener('mousemove', onMouseMove);
+			if (window?.DeviceOrientationEvent && 'ontouchstart' in window) {
+				window.removeEventListener(
+					'deviceorientation',
+					onDeviceOrientation
+				);
+			} else {
+				window.removeEventListener('mousemove', onMouseMove);
+			}
 		};
-	}, [onMouseMove]);
+	}, [onDeviceOrientation, onMouseMove]);
 	const lightRef = useRef(null);
 	return (
 		<Canvas style={{ backgroundColor: '#000', height: '100vh' }}>
