@@ -3,6 +3,7 @@
 	"version": "0.1.0",
 	"private": true,
 	"dependencies": {
+		"@netlify/functions": "^0.7.2",
 		"@react-spring/three": "^9.5.2",
 		"@react-three/drei": "^9.25.2",
 		"@react-three/fiber": "^8.6.0",
