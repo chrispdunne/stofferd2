@@ -18,7 +18,8 @@ const ImgContainer = styled.div`
 	align-items: center;
 	width: 100vw;
 	height: 100%;
-	/* 980px */
+	position: relative;
+	z-index: 1;
 	@media only screen and (min-width: 61.25em) {
 		gap: 100px;
 		flex-direction: row;

@@ -5,13 +5,14 @@ interface WhiteProps {
 }
 
 export const FullHeightSection = styled.section<WhiteProps>`
-	height: 80vh;
+	height: 100vh;
 	background-color: ${props => (props.white ? 'white' : 'black')};
 	position: relative;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
+	gap: 5vh;
 	/* 980px */
 	@media only screen and (min-width: 61.25em) {
 		height: 100vh;
