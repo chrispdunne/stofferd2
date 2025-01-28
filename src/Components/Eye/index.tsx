@@ -9,6 +9,7 @@ import Lid from './Lid';
 import { animated, useSpring } from '@react-spring/three';
 import { getCentredValue } from '../../utils/mouse';
 import useInitialScale from '../../hooks/useInitialScale';
+import { isTouchDevice } from '../../utils/isTouchDevice';
 
 const lidOpen = [5, 0.00001, 1.56];
 const bottomLidClosed = [3.15, 0.00001, 1.56];
@@ -21,8 +22,9 @@ export const defaultConfig = {
 };
 
 export default function Eye() {
-	const [x, setX] = useState(0);
-	const [y, setY] = useState(0);
+	const isMobile = isTouchDevice();
+	const [x, setX] = useState(isMobile ? -0.25 : 0);
+	const [y, setY] = useState(isMobile ? -0.5 : 0);
 
 	const [eyeHovered, _setEyeHovered] = useState(false);
 	const setEyeHovered = (bool: boolean) => {
@@ -56,14 +58,16 @@ export default function Eye() {
 	);
 
 	const onScroll = useMemo(
-		() => (e: Event) => {
-			const scrollY = window.scrollY;
-			const height = window.innerHeight;
-			const progress = scrollY / height;
-			if (progress > 0.01 && progress < 0.5) {
-				setY(2 * progress - 0.5);
-			}
-		},
+		() =>
+			throttle((e: Event) => {
+				const scrollY = window.scrollY;
+				const height = window.innerHeight;
+				const progress = scrollY / height;
+				if (progress > 0.01 && progress < 0.5) {
+					setX(progress - 0.25);
+					setY(2 * progress - 0.5);
+				}
+			}, 20),
 		[]
 	);
 
@@ -76,7 +80,9 @@ export default function Eye() {
 			window.removeEventListener('scroll', onScroll);
 		};
 	}, [onMouseMove, onScroll]);
+
 	const lightRef = useRef(null);
+
 	return (
 		<Canvas style={{ backgroundColor: '#000', height: '100vh' }}>
 			<ambientLight intensity={0.1} />
