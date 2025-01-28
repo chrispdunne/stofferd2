@@ -12,7 +12,7 @@ export default function PageGeneric({ children, isProtected }: Props) {
 	const [loggedIn, setLoggedIn] = useState(false);
 	useEffect(() => {
 		const loggedIn = localStorage.getItem('loggedIn');
-		if (loggedIn) setLoggedIn(true);
+		if (loggedIn === 'true') setLoggedIn(true);
 	}, []);
 	return !isProtected || loggedIn ? (
 		<Container>
