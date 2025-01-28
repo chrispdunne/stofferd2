@@ -9,7 +9,7 @@ import Lid from './Lid';
 import { animated, useSpring } from '@react-spring/three';
 import { getCentredValue } from '../../utils/mouse';
 import useInitialScale from '../../hooks/useInitialScale';
-import { isTouchDevice } from '../../utils/isTouchDevice';
+import { isMouseEvent } from '../../utils/typeGuards';
 
 const lidOpen = [5, 0.00001, 1.56];
 const bottomLidClosed = [3.15, 0.00001, 1.56];
@@ -45,14 +45,18 @@ export default function Eye() {
 
 	const onMouseMove = useMemo(
 		() =>
-			throttle((e: MouseEvent) => {
+			throttle((e: MouseEvent | TouchEvent) => {
+				const isMouse = isMouseEvent(e);
+
 				const width = window.innerWidth;
 				const centerX = width / 2;
 				const height = window.innerHeight;
 				const centerY = height / 2;
+				const x = isMouse ? e.x : e.touches[0].clientX;
+				const y = isMouse ? e.y : e.touches[0].clientY;
 
-				const newX = (e.x - centerX) / centerX;
-				const newY = (e.y - centerY) / centerY;
+				const newX = (x - centerX) / centerX;
+				const newY = (y - centerY) / centerY;
 				const distanceFromCenter = getCentredValue(newX, newY);
 				api.start({
 					rotation: [newX, newY],
@@ -66,28 +70,14 @@ export default function Eye() {
 		[api]
 	);
 
-	const onScroll = useMemo(
-		() =>
-			throttle((e: Event) => {
-				const scrollY = window.scrollY;
-				const height = window.innerHeight;
-				const progress = scrollY / height;
-				if (progress > 0.01 && progress < 0.5) {
-					// setX(progress - 0.25);
-					// setY(2 * progress - 0.5);
-				}
-			}, 20),
-		[]
-	);
-
 	useEffect(() => {
 		window.addEventListener('mousemove', onMouseMove);
-		window.addEventListener('scroll', onScroll);
+		window.addEventListener('touchstart', onMouseMove as any);
 		return () => {
 			window.removeEventListener('mousemove', onMouseMove);
-			window.removeEventListener('scroll', onScroll);
+			window.removeEventListener('touchstart', onMouseMove as any);
 		};
-	}, [onMouseMove, onScroll]);
+	}, [onMouseMove]);
 
 	const lightRef = useRef(null);
 
