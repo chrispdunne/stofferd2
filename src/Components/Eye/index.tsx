@@ -22,25 +22,25 @@ export const defaultConfig = {
 };
 
 export default function Eye() {
-	const isMobile = isTouchDevice();
-	const [x, setX] = useState(isMobile ? -0.25 : 0);
-	const [y, setY] = useState(isMobile ? -0.5 : 0);
-
 	const [eyeHovered, _setEyeHovered] = useState(false);
 	const setEyeHovered = (bool: boolean) => {
 		_setEyeHovered(bool);
 	};
-	const distanceFromCenter = getCentredValue(x, y);
 
 	const scale = useInitialScale();
 
-	const bottomLidRotation = useSpring({
-		config: defaultConfig,
-		rotation: distanceFromCenter < 0.2 ? bottomLidClosed : lidOpen
-	});
-	const topLidRotation = useSpring({
-		config: defaultConfig,
-		rotation: distanceFromCenter < 0.2 ? topLidClosed : lidOpen
+	const [springs, api] = useSpring(
+		() => ({
+			rotation: [0, 0],
+			bottomLidRotation: lidOpen,
+			topLidRotation: lidOpen,
+			config: defaultConfig
+		}),
+		[]
+	);
+
+	api.start({
+		rotation: [0, 0]
 	});
 
 	const onMouseMove = useMemo(
@@ -51,10 +51,19 @@ export default function Eye() {
 				const height = window.innerHeight;
 				const centerY = height / 2;
 
-				setX((e.x - centerX) / centerX);
-				setY((e.y - centerY) / centerY);
+				const newX = (e.x - centerX) / centerX;
+				const newY = (e.y - centerY) / centerY;
+				const distanceFromCenter = getCentredValue(newX, newY);
+				api.start({
+					rotation: [newX, newY],
+
+					bottomLidRotation:
+						distanceFromCenter < 0.2 ? bottomLidClosed : lidOpen,
+					topLidRotation:
+						distanceFromCenter < 0.2 ? topLidClosed : lidOpen
+				});
 			}, 20),
-		[setX, setY]
+		[api]
 	);
 
 	const onScroll = useMemo(
@@ -64,8 +73,8 @@ export default function Eye() {
 				const height = window.innerHeight;
 				const progress = scrollY / height;
 				if (progress > 0.01 && progress < 0.5) {
-					setX(progress - 0.25);
-					setY(2 * progress - 0.5);
+					// setX(progress - 0.25);
+					// setY(2 * progress - 0.5);
 				}
 			}, 20),
 		[]
@@ -74,7 +83,6 @@ export default function Eye() {
 	useEffect(() => {
 		window.addEventListener('mousemove', onMouseMove);
 		window.addEventListener('scroll', onScroll);
-
 		return () => {
 			window.removeEventListener('mousemove', onMouseMove);
 			window.removeEventListener('scroll', onScroll);
@@ -93,7 +101,7 @@ export default function Eye() {
 			/>
 
 			<animated.group
-				rotation={[y, x, 0]}
+				rotation={springs.rotation.to((x, y) => [y, x, 0]) as any}
 				scale={scale}
 				onPointerOver={() => setEyeHovered(true)}
 				onPointerOut={() => setEyeHovered(false)}
@@ -103,16 +111,8 @@ export default function Eye() {
 				<Pupil eyeHovered={eyeHovered} />
 			</animated.group>
 
-			<Lid
-				color="#666"
-				rotation={bottomLidRotation.rotation}
-				// scale={scale}
-			/>
-			<Lid
-				color="#5a5a5a"
-				rotation={topLidRotation.rotation}
-				// scale={scale}
-			/>
+			<Lid color="#666" rotation={springs.bottomLidRotation as any} />
+			<Lid color="#5a5a5a" rotation={springs.topLidRotation as any} />
 
 			<Effects />
 		</Canvas>
