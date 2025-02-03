@@ -13,12 +13,14 @@ import {
 	WorkTitle
 } from './styles';
 import { Link } from 'react-router-dom';
+import Intro from '../Components/Intro';
 
 export default function Home() {
 	return (
 		<>
 			<Nav double />
-			<Eye />
+			<Intro />
+
 			<NextSectionButton white target="s_and_p" />
 
 			<FullHeightSection id="s_and_p" white>

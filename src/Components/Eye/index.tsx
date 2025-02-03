@@ -10,6 +10,7 @@ import { animated, useSpring } from '@react-spring/three';
 import { getCentredValue } from '../../utils/mouse';
 import useInitialScale from '../../hooks/useInitialScale';
 import { isMouseEvent } from '../../utils/typeGuards';
+import { CanvasContainer } from './styles';
 
 const lidOpen = [5, 0.00001, 1.56];
 const bottomLidClosed = [3.15, 0.00001, 1.56];
@@ -82,29 +83,31 @@ export default function Eye() {
 	const lightRef = useRef(null);
 
 	return (
-		<Canvas style={{ backgroundColor: '#000', height: '100vh' }}>
-			<ambientLight intensity={0.1} />
-			<directionalLight
-				ref={lightRef}
-				color="#fff"
-				position={[0.2, 0.2, 0.1]}
-			/>
+		<CanvasContainer>
+			<Canvas>
+				<ambientLight intensity={0.1} />
+				<directionalLight
+					ref={lightRef}
+					color="#fff"
+					position={[0.2, 0.2, 0.1]}
+				/>
 
-			<animated.group
-				rotation={springs.rotation.to((x, y) => [y, x, 0]) as any}
-				scale={scale}
-				onPointerOver={() => setEyeHovered(true)}
-				onPointerOut={() => setEyeHovered(false)}
-			>
-				<EyeBall />
-				<Iris eyeHovered={eyeHovered} />
-				<Pupil eyeHovered={eyeHovered} />
-			</animated.group>
+				<animated.group
+					rotation={springs.rotation.to((x, y) => [y, x, 0]) as any}
+					scale={scale}
+					onPointerOver={() => setEyeHovered(true)}
+					onPointerOut={() => setEyeHovered(false)}
+				>
+					<EyeBall />
+					<Iris eyeHovered={eyeHovered} />
+					<Pupil eyeHovered={eyeHovered} />
+				</animated.group>
 
-			<Lid color="#666" rotation={springs.bottomLidRotation as any} />
-			<Lid color="#5a5a5a" rotation={springs.topLidRotation as any} />
+				<Lid color="#666" rotation={springs.bottomLidRotation as any} />
+				<Lid color="#5a5a5a" rotation={springs.topLidRotation as any} />
 
-			<Effects />
-		</Canvas>
+				<Effects />
+			</Canvas>
+		</CanvasContainer>
 	);
 }
