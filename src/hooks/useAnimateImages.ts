@@ -27,7 +27,7 @@ export default function useAnimateImages(
 			if (i === 0) {
 				tl.set(img, { opacity: 1, x: '-100%' }, 0);
 			} else {
-				tl.set(spot, { css: { opacity: 0 } }, 0);
+				tl.set(spot, { css: { opacity: 0.1 } }, 0);
 			}
 
 			// animate in
@@ -43,10 +43,10 @@ export default function useAnimateImages(
 			if (i !== images.length - 1) {
 				tl.to(
 					img,
-					{ opacity: 0, duration: 1, x: '-200%', ease: 'none' },
+					{ opacity: 0.1, duration: 1, x: '-200%', ease: 'none' },
 					i
 				);
-				tl.to(spot, { duration: 1, css: { opacity: 0 } }, i);
+				tl.to(spot, { duration: 1, css: { opacity: 0.1 } }, i);
 			}
 		});
 		tl.scrollTrigger?.refresh();

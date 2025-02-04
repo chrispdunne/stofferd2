@@ -173,7 +173,6 @@ export const WorkImagesContainer = styled.div`
 	.spot-container {
 		width: 12px;
 		height: 12px;
-		border: 1px solid #fff;
 		border-radius: 100%;
 		margin: 8px 0;
 		cursor: pointer;

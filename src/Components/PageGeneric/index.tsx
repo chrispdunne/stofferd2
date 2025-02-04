@@ -9,7 +9,7 @@ interface Props {
 }
 
 export default function PageGeneric({ children, isProtected }: Props) {
-	const [loggedIn, setLoggedIn] = useState(false);
+	const [loggedIn, setLoggedIn] = useState(true);
 	useEffect(() => {
 		const loggedIn = localStorage.getItem('loggedIn');
 		if (loggedIn === 'true') setLoggedIn(true);

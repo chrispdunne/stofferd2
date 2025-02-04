@@ -14,6 +14,7 @@ export const Grid = styled.div`
 		transition: all 0.2s ease-in-out;
 		box-shadow: 1px 1px 0px 1px rgba(0, 0, 0, 1);
 		background: #f7f7f7;
+		box-sizing: border-box;
 	}
 	.empty {
 		opacity: 0;
@@ -30,9 +31,16 @@ export const Grid = styled.div`
 		}
 	}
 	@media only screen and (min-width: 61.25em) {
+		div {
+			border-top: 8px solid transparent;
+			border-left: 8px solid transparent;
+			border-right: 8px solid transparent;
+			border-bottom: 8px solid transparent;
+		}
 		&:hover {
 			div {
-				border-radius: 25%;
+				border-left-color: black;
+				border-bottom-color: black;
 			}
 		}
 	}

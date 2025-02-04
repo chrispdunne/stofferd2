@@ -35,9 +35,6 @@ export default function WorkImages({ images, title, subtitle }: Props) {
 			</div>
 			<div ref={workImagesRef} className="work-images">
 				{images.map((img, i) => {
-					// const caption = String(img.match(/[^/[0-9]+-]*.+[.$]/g))
-					// 	.replace(/-/g, ' ')
-					// 	.replace(/[^.]*$/, '');
 					const caption = img
 						.replace(/^(\/[a-zA-Z | /]*\d+-)/g, '')
 						.replace(/\.[a-zA-Z | \d]*/g, '')

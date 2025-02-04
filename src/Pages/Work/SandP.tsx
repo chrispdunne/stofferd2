@@ -12,9 +12,8 @@ export default function SandP() {
 			<WorkImages
 				images={images as string[]}
 				title="S&P Global"
-				subtitle={`TBC.
-            
-TBC`}
+				subtitle={`React, TypeScript, C#, Redux development for a financial platform that processes 10% of all EU trading volume. Mentoring and training developers. Converted codebase to TypeScript. Increased code coverage from < 2% to over 60%.'
+`}
 			/>
 		</PageGeneric>
 	);

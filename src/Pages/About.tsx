@@ -135,7 +135,7 @@ export default function About() {
 			<Nav />
 
 			<AboutPage>
-				<h1>About Stoffer</h1>
+				<h1>About Chris</h1>
 				<div className="timeline" ref={timeline}>
 					{sections.map((section, i) => {
 						return (

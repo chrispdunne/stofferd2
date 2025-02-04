@@ -6,6 +6,7 @@ export const logoPixels = [
 	'fill',
 	'fill',
 	'empty',
+
 	'fill',
 	'empty',
 	'empty',
@@ -13,16 +14,18 @@ export const logoPixels = [
 	'fill',
 	'empty',
 	'fill',
+
+	'fill',
+	'empty',
 	'empty',
 	'empty',
 	'fill',
 	'empty',
 	'fill',
+
 	'empty',
 	'fill',
 	'fill',
-	'fill',
-	'empty',
 	'empty',
 	'fill',
 	'fill',

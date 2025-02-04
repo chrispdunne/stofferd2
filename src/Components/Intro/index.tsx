@@ -8,7 +8,7 @@ export default function Intro() {
 			<IntroContainer>
 				<IntroSubtitle>React, TypeScript, Node, C#</IntroSubtitle>
 				<IntroTitle>Full stack developer</IntroTitle>
-				<Link className="btn" to="/work/sandp">
+				<Link className="btn" to="/about">
 					Find out more
 				</Link>
 			</IntroContainer>
