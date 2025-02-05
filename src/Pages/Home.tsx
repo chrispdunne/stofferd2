@@ -1,4 +1,3 @@
-import Eye from '../Components/Eye';
 import Nav from '../Components/Nav';
 import NextSectionButton from '../Components/Buttons/NextSectionButton';
 import BackToTopButton from '../Components/Buttons/BackToTopButton';

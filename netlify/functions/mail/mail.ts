@@ -9,8 +9,8 @@ export const handler: Handler = async event => {
 	const body = JSON.parse(event.body ?? '');
 
 	const response = await client.sendEmail({
-		From: 'hello@stofferd.com',
-		To: 'hello@stofferd.com',
+		From: 'chris@lightningpixels.co.uk',
+		To: 'chris@lightningpixels.co.uk',
 		Subject: `Message from ${body.name}`,
 		TextBody: `Message from name: ${body.name},
          email: ${body.email}, 

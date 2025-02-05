@@ -8,6 +8,8 @@ export const Container = styled.div`
 	align-items: center;
 	justify-content: center;
 	color: #fff;
+	position: relative;
+	z-index: 1;
 `;
 
 export const PageTitle = styled.h1``;

@@ -7,6 +7,7 @@ import reportWebVitals from './reportWebVitals';
 const root = ReactDOM.createRoot(
 	document.getElementById('root') as HTMLElement
 );
+// note strict mode causes issues with GSAP locally
 root.render(
 	<React.StrictMode>
 		<App />
