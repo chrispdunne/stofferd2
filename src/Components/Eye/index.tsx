@@ -53,15 +53,24 @@ export default function Eye() {
 				const centerX = width / 2;
 				const height = window.innerHeight;
 				const centerY = height / 2;
-				const x = isMouse ? e.x : e.touches[0].clientX;
-				const y = isMouse ? e.y : e.touches[0].clientY;
 
-				const newX = (x - centerX) / centerX;
-				const newY = (y - centerY) / centerY;
+				const x = isMouse ? e.x : e.touches[0].clientX;
+
+				// we take away scroll Y so that as you scroll down the eye still follows the mouse
+				const y = isMouse
+					? e.y + window.scrollY
+					: e.touches[0].clientY + window.scrollY;
+
+				// mouse position take away center coord to give distance
+				// divided by center value
+				const newX = Math.min((x - centerX) / centerX, 1);
+				const newY = Math.min((y - centerY) / centerY, 1);
+
+				// how close to the eye (for eyelids closing animation)
 				const distanceFromCenter = getCentredValue(newX, newY);
+
 				api.start({
 					rotation: [newX, newY],
-
 					bottomLidRotation:
 						distanceFromCenter < 0.2 ? bottomLidClosed : lidOpen,
 					topLidRotation:
@@ -83,7 +92,7 @@ export default function Eye() {
 	const lightRef = useRef(null);
 
 	return (
-		<CanvasContainer>
+		<CanvasContainer id="eye-container">
 			<Canvas>
 				<ambientLight intensity={0.1} />
 				<directionalLight
