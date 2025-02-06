@@ -5,7 +5,8 @@ const StyledTimelineSection = styled.div`
 	display: flex;
 	position: relative;
 	left: -22px;
-	height: 33vh;
+	min-height: 33vh;
+	margin-bottom: 50px;
 	p {
 		margin: 0.5rem 0;
 		line-height: 1.4;
