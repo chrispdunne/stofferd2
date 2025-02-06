@@ -50,15 +50,12 @@ export const StyledNav = styled.div`
 	}
 	.nav-link {
 		span {
+			transition: all 0.3s ease-out;
 			display: inline-block;
-			transition: transform 0.3s ease-in-out;
 		}
 		&:hover {
-			span:nth-child(odd) {
-				transform: rotate(15deg);
-			}
-			span:nth-child(even) {
-				transform: rotate(-15deg);
+			span {
+				transform: rotate(180deg);
 			}
 		}
 	}

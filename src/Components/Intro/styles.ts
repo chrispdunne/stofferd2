@@ -8,10 +8,12 @@ export const IntroContainer = styled.div`
 	text-align: center;
 	color: #fff;
 	width: 100%;
+	margin-top: 50px;
 	/* 980px */
 	@media only screen and (min-width: 61.25em) {
 		left: 0;
 		top: 50%;
+		margin-top: 0px;
 		transform: translateY(-50%);
 		text-align: left;
 		margin-left: 50px;
