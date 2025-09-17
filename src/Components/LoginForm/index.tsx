@@ -1,5 +1,8 @@
 import styled from 'styled-components';
 
+const EXPIRY_TIME = 1000 * 60 * 60 * 24; // 24 hours in ms
+export const EXPIRY_KEY = 'exp';
+
 const LoginBox = styled.div`
 	position: fixed;
 	z-index: 50;
@@ -49,7 +52,10 @@ export default function LoginForm({ loggedIn, setLoggedIn }: Props) {
 		});
 		const body = await res.text();
 		if (body === 'true') {
-			window.localStorage.setItem('loggedIn', 'true');
+			window.localStorage.setItem(
+				EXPIRY_KEY,
+				(Date.now() + EXPIRY_TIME).toString()
+			);
 			setLoggedIn(true);
 		}
 	};

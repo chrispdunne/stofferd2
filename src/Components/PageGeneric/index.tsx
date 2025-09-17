@@ -1,7 +1,7 @@
 import { ReactNode, useEffect, useState } from 'react';
 import Nav from '../Nav';
 import { Container } from './styles';
-import LoginForm from '../LoginForm';
+import LoginForm, { EXPIRY_KEY } from '../LoginForm';
 
 interface Props {
 	children: ReactNode;
@@ -9,10 +9,13 @@ interface Props {
 }
 
 export default function PageGeneric({ children, isProtected }: Props) {
-	const [loggedIn, setLoggedIn] = useState(true);
+	const [loggedIn, setLoggedIn] = useState(false);
 	useEffect(() => {
-		const loggedIn = localStorage.getItem('loggedIn');
-		if (loggedIn === 'true') setLoggedIn(true);
+		const loggedInExpiry = parseInt(
+			localStorage.getItem(EXPIRY_KEY) ?? '0'
+		);
+		const now = Date.now();
+		if (loggedInExpiry > now) setLoggedIn(true);
 	}, []);
 	return !isProtected || loggedIn ? (
 		<Container>
